@@ -33,7 +33,7 @@ public class ListaEncadeada<T> {
 		primeiro = null;
 		tamanho = 0;
 	}
-
+	
 	/**
 	 * Retorna se a lista está vazia.
 	 * 

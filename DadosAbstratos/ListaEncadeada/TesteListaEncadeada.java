@@ -13,8 +13,8 @@ public class TesteListaEncadeada
         lista.inserir("Joaquim");
         lista.inserir("Renato");
         lista.inserir("Jucele");
-
-        
+        lista.exibir();
+        System.out.println(lista.remover());
         
     }
 }
