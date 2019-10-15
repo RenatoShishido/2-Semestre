@@ -109,42 +109,45 @@ public class ListaEncadeada<T> {
          */
         public ListaEncadeada<T> intercala(ListaEncadeada<T> lista2)
 	{
-		ListaEncadeada<T> lista3 = new ListaEncadeada();
-
 		No<T> noAtualList1 = primeiro;
 		No<T> noAtualList2 = lista2.primeiro;
+
+		ListaEncadeada<T> lista3 = new ListaEncadeada();
+		
+		lista3.primeiro = new No<T>(null);
+
 		No<T> noAtualList3 = lista3.primeiro;
-                
-                
+
 		while(noAtualList1 != null && noAtualList2 != null)
 		{
 			Comparable info = (Comparable) noAtualList1.info;
 			Comparable info2 = (Comparable) noAtualList2.info;
-                                
+			
 			if(info.compareTo(info2) <= 0){
-                            noAtualList3.prox = new No<T>(noAtualList1.info);
-                            noAtualList1 = noAtualList1.prox;
+                noAtualList3.prox = new No<T>(noAtualList1.info);
+                noAtualList1 = noAtualList1.prox;
 			}
 			else{
-                            noAtualList3.prox = new No<T>(noAtualList2.info);
-                            noAtualList2 = noAtualList2.prox;
+				noAtualList3.prox = new No<T>(noAtualList2.info);
+				noAtualList2 = noAtualList2.prox;
 			}
-                        noAtualList3 = noAtualList3.prox;
-                        ++lista3.tamanho;
+				noAtualList3 = noAtualList3.prox;
+				++lista3.tamanho;
 		}
 		while(noAtualList1 != null){
 			noAtualList3.prox = new No<T>(noAtualList1.info);
 			noAtualList1 = noAtualList1.prox;
 			noAtualList3 = noAtualList3.prox;
-                        ++lista3.tamanho;
+            ++lista3.tamanho;
 
 		}
 		while(noAtualList2 != null){
 			noAtualList3.prox = new No<T>(noAtualList2.info);
 			noAtualList2 = noAtualList2.prox;
 			noAtualList3 = noAtualList3.prox;
-                        ++lista3.tamanho;
+            ++lista3.tamanho;
 		}
+		lista3.primeiro = lista3.primeiro.prox;
 	
 		return lista3;
 
