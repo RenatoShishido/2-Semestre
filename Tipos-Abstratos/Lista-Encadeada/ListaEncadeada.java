@@ -28,12 +28,6 @@ public class ListaEncadeada<T> {
 		tamanho = 0;
 	}
 
-	public ListaEncadeada(int capacidade)
-	{
-		primeiro = null;
-		tamanho = 0;
-	}
-	
 	/**
 	 * Retorna se a lista está vazia.
 	 * 
@@ -70,15 +64,15 @@ public class ListaEncadeada<T> {
 		primeiro = new No<T>(item, primeiro);
 		++tamanho;
 	}
-	public void inverter()
-	{
+
+	public void inverter() {
 		No<T> dir = primeiro.prox;
 		No<T> esq = primeiro;
 		No<T> n;
 
 		esq.prox = null;
 
-		while(dir != null){
+		while (dir != null) {
 			n = dir;
 			dir = dir.prox;
 			n.prox = esq;
@@ -86,13 +80,14 @@ public class ListaEncadeada<T> {
 		}
 		primeiro = esq;
 	}
-	public boolean equals(ListaEncadeada<T> o){
+
+	public boolean equals(ListaEncadeada<T> o) {
 		No<T> no = primeiro;
 		No<T> no2 = o.primeiro;
 		boolean lista = true;
 
-		while(no != null){
-			if(!no.info.equals(no2.info)){
+		while (no != null) {
+			if (!no.info.equals(no2.info)) {
 				lista = false;
 			}
 			no = no.prox;
@@ -101,218 +96,204 @@ public class ListaEncadeada<T> {
 		}
 		return lista;
 	}
-        /**
-         * Intercala duas lista de mesmo tamanho
-         * 
-         * @param lista2
-         * @return 
-         */
-        public ListaEncadeada<T> intercala(ListaEncadeada<T> lista2)
-	{
+
+	/**
+	 * Intercala duas lista de mesmo tamanho
+	 * 
+	 * @param lista2
+	 * @return
+	 */
+	public ListaEncadeada<T> intercala(ListaEncadeada<T> lista2) {
 		No<T> noAtualList1 = primeiro;
 		No<T> noAtualList2 = lista2.primeiro;
 
 		ListaEncadeada<T> lista3 = new ListaEncadeada();
-		
+
 		lista3.primeiro = new No<T>(null);
 
 		No<T> noAtualList3 = lista3.primeiro;
 
-		while(noAtualList1 != null && noAtualList2 != null)
-		{
+		while (noAtualList1 != null && noAtualList2 != null) {
 			Comparable info = (Comparable) noAtualList1.info;
 			Comparable info2 = (Comparable) noAtualList2.info;
-			
-			if(info.compareTo(info2) <= 0){
-                noAtualList3.prox = new No<T>(noAtualList1.info);
-                noAtualList1 = noAtualList1.prox;
-			}
-			else{
+
+			if (info.compareTo(info2) <= 0) {
+				noAtualList3.prox = new No<T>(noAtualList1.info);
+				noAtualList1 = noAtualList1.prox;
+			} else {
 				noAtualList3.prox = new No<T>(noAtualList2.info);
 				noAtualList2 = noAtualList2.prox;
 			}
-				noAtualList3 = noAtualList3.prox;
-				++lista3.tamanho;
+			noAtualList3 = noAtualList3.prox;
+			++lista3.tamanho;
 		}
-		while(noAtualList1 != null){
+		while (noAtualList1 != null) {
 			noAtualList3.prox = new No<T>(noAtualList1.info);
 			noAtualList1 = noAtualList1.prox;
 			noAtualList3 = noAtualList3.prox;
-            ++lista3.tamanho;
+			++lista3.tamanho;
 
 		}
-		while(noAtualList2 != null){
+		while (noAtualList2 != null) {
 			noAtualList3.prox = new No<T>(noAtualList2.info);
 			noAtualList2 = noAtualList2.prox;
 			noAtualList3 = noAtualList3.prox;
-            ++lista3.tamanho;
+			++lista3.tamanho;
 		}
 		lista3.primeiro = lista3.primeiro.prox;
-	
+
 		return lista3;
 
-            }
-        /**
+	}
+
+	/**
 	 * Insere o item dado no início da lista.
 	 * 
 	 * @param item
 	 */
-	public void selection()
-	{
+	public void selection() {
 		No<T> i = primeiro;
 		No<T> j = i.prox;
 		No<T> min = i;
 
-		while(i != null)
-		{
+		while (i != null) {
 
 			min = i;
 			j = i.prox;
-			while(j != null)
-			{
+			while (j != null) {
 				Comparable jd = (Comparable) j.info;
 				Comparable mini = (Comparable) min.info;
-				if(mini.compareTo(jd) >= 0)
-				{
+				if (mini.compareTo(jd) >= 0) {
 					min = j;
 				}
 				j = j.prox;
 			}
 			T aux = min.info;
 			min.info = i.info;
-			i.info =  aux;
+			i.info = aux;
 			i = i.prox;
 		}
-            }
-        /**
-         * Inseri elementos na lista encadeada.
-         * 
-         * @param item
-         * @param posicao 
-         */
-        public void inserirPosicao(T item, int posicao){
-            if(tamanho == 0){
-                vazia();
-            }
-            
-            No<T> n = primeiro;
-            if(posicao > tamanho)
-                {
-                    inserirUltimo(item);
-                }
-            else{
-                for(int  i = 0 ; i < posicao ; i++)
-                {
-                    if(i == posicao - 2)
-                    {
-                        n.prox = new No<T>(item,n.prox);
-                        ++tamanho;
-                    }
-                    n = n.prox;
-                }
-            }
-        }
-        /**
-         * remover um item em qual quer posição da lista encadeada.
-         * 
-         * @param item
-         * @param posicao 
-         */
-        public void removerPosicao(int posicao)
-        {
-            if(tamanho == 0){
-                vazia();
-            }
-            
-            No<T> n = primeiro;
-            if(posicao > tamanho)
-                {
-                    removerUltimo();
-                    --tamanho;
-                }
-            else{
-                for(int  i = 0 ; i < posicao ; i++)
-                {
-                     if(posicao == 1)
-                    {
-                        primeiro = n.prox;
-                        n.prox = null;
-                        --tamanho;
-                    }
-                     else if(i == posicao - 2)
-                    {
-                        n.prox = n.prox.prox;
-                        --tamanho;
-                    }
-                    n = n.prox;
-                }
-            }
-        }
+	}
+
+	/**
+	 * Inseri elementos na lista encadeada.
+	 * 
+	 * @param item
+	 * @param posicao
+	 */
+	public void inserirPosicao(T item, int posicao) {
+		if (tamanho == 0) {
+			vazia();
+		}
+
+		No<T> n = primeiro;
+		if (posicao > tamanho) {
+			inserirUltimo(item);
+		} else {
+			for (int i = 0; i < posicao; i++) {
+				if (i == posicao - 2) {
+					n.prox = new No<T>(item, n.prox);
+					++tamanho;
+				}
+				n = n.prox;
+			}
+		}
+	}
+
+	/**
+	 * remover um item em qual quer posição da lista encadeada.
+	 * 
+	 * @param item
+	 * @param posicao
+	 */
+	public void removerPosicao(int posicao) {
+		if (tamanho == 0) {
+			vazia();
+		}
+
+		No<T> n = primeiro;
+		if (posicao > tamanho) {
+			removerUltimo();
+			--tamanho;
+		} else {
+			for (int i = 0; i < posicao; i++) {
+				if (posicao == 1) {
+					primeiro = n.prox;
+					n.prox = null;
+					--tamanho;
+				} else if (i == posicao - 2) {
+					n.prox = n.prox.prox;
+					--tamanho;
+				}
+				n = n.prox;
+			}
+		}
+	}
+
 	/**
 	 * Insere o item no penultimo da lista
 	 * 
 	 * @param item
 	 */
-	public void inserirPenultimo(T item)
-	{
-            if(tamanho == 0){
-                vazia();
-            }
+	public void inserirPenultimo(T item) {
+		if (tamanho == 0) {
+			vazia();
+		}
 
-            No<T> n = primeiro;
-            while (n != null) {
-                    if (n.prox.prox == null) { 
-                        n.prox = new No<T>(item, n.prox);
-                        n = n.prox.prox; 
-                    }
-                    n = n.prox;
-            }
-            ++tamanho;
+		No<T> n = primeiro;
+		while (n != null) {
+			if (n.prox.prox == null) {
+				n.prox = new No<T>(item, n.prox);
+				n = n.prox.prox;
+			}
+			n = n.prox;
+		}
+		++tamanho;
 	}
-        public void removerUltimo()
-        {
-              if(tamanho == 0){
-                vazia();
-            }
 
-            No<T> n = primeiro;
-            while (n != null) {
-                    if (n.prox.prox == null) { 
-                        n.prox = null;
-                    }
-                    n = n.prox;
-            }
-            ++tamanho;
-        }
+	public void removerUltimo() {
+		if (tamanho == 0) {
+			vazia();
+		}
+
+		No<T> n = primeiro;
+		while (n != null) {
+			if (n.prox.prox == null) {
+				n.prox = null;
+			}
+			n = n.prox;
+		}
+		++tamanho;
+	}
+
 	/**
 	 * Insere o item no ultimo da lista
 	 * 
 	 * @param item
 	 */
-	public void inserirUltimo(T item)
-	{
-            if(tamanho == 0){
-                vazia();
-            }
-                
+	public void inserirUltimo(T item) {
+		if (tamanho == 0) {
+			vazia();
+		}
+
 		No<T> n = primeiro;
 		while (n != null) {
 			if (n.prox == null) {
-                            n.prox = new No<T> (item);
-                            n = n.prox;
+				n.prox = new No<T>(item);
+				n = n.prox;
 			}
 			n = n.prox;
 		}
 		++tamanho;
 
 	}
+
 	/**
 	 * Remove o penultimo item da lista
 	 * 
 	 * @return
 	 */
-	public T removerPenultimo()
-	{
+	public T removerPenultimo() {
 		No<T> n = primeiro;
 		T item = (T) n.prox;
 		while (n.prox != null) {

@@ -5,17 +5,14 @@
  *
  */
 public class FilaEncadeada<T> implements Fila<T> {
-
 	/**
 	 * Referência para o nó no início da fila.
 	 */
 	private No<T> inicio;
-
 	/**
 	 * Referência para o nó no final da fila.
 	 */
 	private No<T> fim;
-
 	/**
 	 * Armazena o tamanho da fila.
 	 */
@@ -30,25 +27,30 @@ public class FilaEncadeada<T> implements Fila<T> {
 		tamanho = 0;
 	}
 
-	
+	/**
+	 * enfileira um item dentro da fila
+	 * 
+	 * @param item
+	 * 
+	 */
 	public void enfileirar(T item) {
-		inicio = new No<T>(item,inicio);
-		if(tamanho == 0){
+		if (tamanho == 0) {
+			inicio = new No<T>(item, inicio);
 			fim = inicio;
-		}
-		++tamanho;
-	}
-	public void enfileirarFinal(T item) {
-		if(tamanho == 0){
-			enfileirar(item);
-		}else{
+			++tamanho;
+		} else {
 			No<T> nova = new No<T>(item);
 			fim.prox = nova;
 			fim = nova;
 			++tamanho;
 		}
-
 	}
+	/**
+	 * desenfileira um item dentro da fila
+	 * 
+	 * @return T
+	 * 
+	 */
 	public T desenfileirar() {
 		T item = inicio.info;
 		inicio = inicio.prox;
@@ -56,22 +58,43 @@ public class FilaEncadeada<T> implements Fila<T> {
 		return item;
 	}
 
+	/**
+	 * retorna o primeiro item da fila
+	 * 
+	 * @return
+	 * 
+	 */
 	public T primeiro() {
 		return inicio.info;
 	}
 
+	/**
+	 * retorna se a fila esta vazia
+	 * 
+	 * @return
+	 * 
+	 */
 	public boolean vazia() {
-		if(inicio.info == null)
+		if (inicio.info == null)
 			return true;
 		else
 			return false;
-
 	}
 
+	/**
+	 * retorna o tamanho da fila
+	 * 
+	 * @return
+	 * 
+	 */
 	public int tamanho() {
 		return tamanho;
 	}
 
+	/**
+	 * exibe a fila
+	 * 
+	 */
 	public void exibir() {
 		No<T> n = inicio;
 		while (n != null) {
@@ -79,5 +102,4 @@ public class FilaEncadeada<T> implements Fila<T> {
 			n = n.prox;
 		}
 	}
-
 }

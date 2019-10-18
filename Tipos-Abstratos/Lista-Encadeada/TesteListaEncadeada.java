@@ -13,7 +13,7 @@ public class TesteListaEncadeada
         lista.inserir(6);
         lista.inserir(4);
         lista.inserir(2);
-
+        
         lista2.inserir(9);
         lista2.inserir(7);
         lista2.inserir(5);
@@ -21,7 +21,7 @@ public class TesteListaEncadeada
         lista2.inserir(1);
 
         lista.intercala(lista2).exibir();
-
+        
         
     }
 }

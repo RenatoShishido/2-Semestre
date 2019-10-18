@@ -1,4 +1,5 @@
 import java.util.Arrays;
+
 public class FilaSeq<T> implements Fila<T> {
 	private T[] itens;
 	private int ini;
@@ -13,16 +14,15 @@ public class FilaSeq<T> implements Fila<T> {
 	}
 
 	public void enfileirar(T item) {
-		if(cheia()){
-			System.out.println("A fila esta cheia");
-		}else{
+		if (cheia()) {
+			System.out.println("A fila esta cheia nao foi possivel colocar " + item);
+		} else {
 			fim = (fim + 1) % itens.length;
 			itens[fim] = item;
 			++tamanho;
 		}
 	}
 
-	
 	public T desenfileirar() {
 		T item = itens[ini];
 		itens[ini] = null;
@@ -31,7 +31,6 @@ public class FilaSeq<T> implements Fila<T> {
 		return item;
 	}
 
-
 	public T primeiro() {
 		return itens[ini];
 	}
@@ -39,17 +38,20 @@ public class FilaSeq<T> implements Fila<T> {
 	public boolean vazia() {
 		return tamanho == 0;
 	}
+
 	public boolean cheia() {
 		boolean cheia = true;
-		if(tamanho == itens.length){
+		if (tamanho == itens.length) {
 			return cheia;
 		}
 		return cheia = false;
 	}
+
 	public int tamanho() {
 		return tamanho;
 	}
-	public void exibir(){
+
+	public void exibir() {
 		System.out.println(Arrays.toString(itens));
 	}
 

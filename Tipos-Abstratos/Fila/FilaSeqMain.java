@@ -1,4 +1,4 @@
-public class FilaSeqMain{
+public class FilaSeqMain {
     public static void main(String[] args) {
         FilaSeq<Integer> fila = new FilaSeq<>();
 
@@ -12,12 +12,11 @@ public class FilaSeqMain{
         fila.enfileirar(20);
         fila.enfileirar(5);
         fila.enfileirar(0);
+        fila.enfileirar(500);
         System.out.println(fila.desenfileirar());
         fila.enfileirar(0);
 
         fila.exibir();
-
-        
 
     }
 }
