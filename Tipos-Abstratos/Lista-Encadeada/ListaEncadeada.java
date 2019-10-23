@@ -1,4 +1,3 @@
-import javax.swing.text.StyledEditorKit.BoldAction;
 
 /**
  * Lista encadeada usando tipos genéricos.
@@ -54,7 +53,72 @@ public class ListaEncadeada<T> {
 	public T primeiro() {
 		return primeiro.info;
 	}
+	public ListaEncadeada<T> passo(int passo){
+		ListaEncadeada<T> lista = new ListaEncadeada<>();
+		No<T> ponteiro = primeiro;
+		No<T> ponteiro2 = primeiro;
+		No<T> aux1;
+		No<T> aux2;
 
+		lista.primeiro = new No<T>(null);
+
+		No<T> listaAux = lista.primeiro;
+
+		int i = 0;
+		while(ponteiro != null){
+			i=0;
+			while(i < passo){
+				ponteiro2 = ponteiro2.prox;
+				i++;
+			}
+			while(i < passo - 1){
+				ponteiro = ponteiro.prox;
+				i++;
+			}
+			aux1 = ponteiro2;
+			aux2 = ponteiro;
+			ponteiro2 = ponteiro.prox;
+			ponteiro.prox = ponteiro2;
+			listaAux.prox = aux1;
+		}
+		return lista;
+		
+	}
+	/**
+	 * troca dois elementos da lista;
+	 * 
+	 * @param i
+	 * @param j
+	 */
+	public void trocar(int i , int j){
+		No<T> esq = primeiro;
+		No<T> dir = primeiro;
+		No<T> ponteiro1;
+		No<T> ponteiro2;
+		No<T> p;
+
+		int cont = 0;
+		int cont2 = 0;
+		while(cont < i - 1){
+			esq = esq.prox;
+			cont++;
+		}while(cont2 < j- 1){
+			dir = dir.prox;
+			cont2++;
+		}	
+		ponteiro1 = esq;
+		ponteiro2 = dir;
+		esq = esq.prox;
+		dir = dir.prox;
+		ponteiro1.prox = dir;
+		p = dir.prox;
+		dir.prox = ponteiro2;
+		ponteiro2.prox = esq;
+		esq.prox = p;
+		
+		
+		
+	}
 	/**
 	 * Insere o item dado no início da lista.
 	 * 
@@ -64,7 +128,6 @@ public class ListaEncadeada<T> {
 		primeiro = new No<T>(item, primeiro);
 		++tamanho;
 	}
-
 	public void inverter() {
 		No<T> dir = primeiro.prox;
 		No<T> esq = primeiro;
