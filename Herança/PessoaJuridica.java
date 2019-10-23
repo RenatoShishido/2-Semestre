@@ -4,12 +4,15 @@ public class PessoaJuridica extends Pessoa {
 
     public PessoaJuridica(String nome , String endereço , String telefone, String cnpj , String insEstadual) {
         super(nome, endereço, telefone);
-        this.cnpj = cnpj;
         this.insEstadual = insEstadual;
+        if(valida(cnpj)){
+            this.cnpj = cnpj;
+        }
     }
-    public boolean valida(String cnpj){
-        super.valida(telefone);
-        if(cnpj.length() == 15){
+    public PessoaJuridica() {
+	}
+	public boolean valida(String cnpj){
+        if(cnpj.length() == 14){
             return true;
         }else return false;
     }

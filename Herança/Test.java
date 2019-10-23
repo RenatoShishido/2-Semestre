@@ -1,19 +1,22 @@
-import java.util.LinkedList;
-
 public class Test {
     public static void main(String[] args) {
-        Pessoa pessoa = new Pessoa("Renato", "Rua", "06979145185"),
-        pessoa2 = new Pessoa("Luan", "Rua", "069794"),
-        pessoa3 = new Pessoa("Pedro", "Rua", "069794");
 
-        PessoaJuridica p3 = new PessoaJuridica("Renato", "Rua", "06979145185","068794164154","1215454");
-        PessoaFisica p2 = new PessoaFisica("Renato", "Rua", "06979145185","068794164154154","1215454");
+        PessoaJuridica pessoaJuridica = new PessoaJuridica("Lucas", "Rua", "995827536","06879416415416","1215454"),
+        		pessoaJuridica2 = new PessoaJuridica("Renato", "Rua", "993478185", "06879416415416", "156456465");
+        
+        
+       
+        PessoaFisica pessoaFisica = new PessoaFisica("Joaquim", "Rua", "993857315","06979145185","06122000"),
+        		pessoaFisica2 = new PessoaFisica("Luan", "Rua", "159357456","06979145185", "14101997");
+        
+        
         Agenda agenda = new Agenda();
 
-        agenda.inserir(pessoa);
-        agenda.inserir(pessoa2);
-        agenda.inserir(pessoa3);
-        agenda.inserir(p3);
+        agenda.inserir(pessoaJuridica);
+        agenda.inserir(pessoaJuridica2);
+        agenda.inserir(pessoaFisica);
+        agenda.inserir(pessoaFisica2);
+        agenda.remover("LUAN");
         agenda.exibir();
     }
 }

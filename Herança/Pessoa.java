@@ -1,8 +1,9 @@
-public class Pessoa{
+public abstract class Pessoa{
    protected String nome;
    protected String endereço;
    protected String telefone;
-
+    
+    public Pessoa() {}
     public Pessoa(String nome, String endereço, String telefone) {
         this.nome = nome;
         this.endereço = endereço;
