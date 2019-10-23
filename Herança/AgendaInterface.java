@@ -1,7 +1,7 @@
-public interface AgendaInterface<T>{
+public interface AgendaInterface{
     void inserir(Pessoa pessoa);
-    T remover(T pessoa);
-    void pesquisar(T cpf);
+    String remover(String pessoa);
+    void pesquisar(String cpf);
 
 
 }
