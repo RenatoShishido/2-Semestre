@@ -37,6 +37,9 @@ public abstract class Pessoa{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    public String getId(){
+        return null;
+    }
     @Override
     public String toString() {
         return "Pessoa [endereco=" + endereco + ", nome=" + nome + ", telefone=" + telefone + "]\n";

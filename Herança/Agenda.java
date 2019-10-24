@@ -13,16 +13,12 @@ public class Agenda implements AgendaInterface{
     	
     }
     public void remover(String removerPessoa) {
-        PessoaFisica p1;
-        p1 = (PessoaFisica) pessoa.get(3);
-        System.out.println(p1.getCpf());
-        System.out.println(p1.getClass().getSimpleName());
         for(int i= 0; i < pessoa.size() ; i ++){
-            /*if(pessoa.get(i).nome.equalsIgnoreCase(removerPessoa)){
+            if(pessoa.get(i).nome.equalsIgnoreCase(removerPessoa)){
                 pessoa.remove(pessoa.get(i));
-            }else if (p1.getCpf().equals(removerPessoa)){
-                pessoa.remove(p1.getCpf());
-            }*/
+            }else if (pessoa.get(i).getId().equalsIgnoreCase(removerPessoa)){
+                pessoa.remove(pessoa.get(i));
+            }
          }
     }
     public void ordenarCpf(){
@@ -30,12 +26,15 @@ public class Agenda implements AgendaInterface{
     }
 
     public void pesquisar(String pesquisa) {
-
+        for(int i= 0; i < pessoa.size() ; i ++){
+            if(pessoa.get(i).nome.equalsIgnoreCase(pesquisa)){
+                System.out.println(pessoa.get(i));
+            }else if (pessoa.get(i).getId().equalsIgnoreCase(pesquisa)){
+                System.out.println(pessoa.get(i));
+            }
+        }
     }
     public void exibir(){
-            System.out.println(pessoa.toString());
-    }
-    public void exibe(){
          for(int i= 0; i < pessoa.size() ; i ++){
             System.out.println(pessoa.get(i));
         }

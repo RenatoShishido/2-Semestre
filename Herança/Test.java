@@ -15,8 +15,9 @@ public class Test {
         agenda.inserir(pessoaFisica);
         agenda.inserir(pessoaFisica2);
         //agenda.ordenarCpf();
-        agenda.remover("06979145185");
+        //agenda.remover("06979145185");
         //agenda.remover("LUAN");
-        agenda.exibe();
+        //agenda.exibir();
+        agenda.pesquisar("Renato");
     }
 }
