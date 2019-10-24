@@ -1,15 +1,15 @@
 public abstract class Pessoa{
    protected String nome;
-   protected String endereço;
+   protected String endereco;
    protected String telefone;
     
     public Pessoa() {}
-    public Pessoa(String nome, String endereço, String telefone) {
+    public Pessoa(String nome, String endereco, String telefone) {
         this.nome = nome;
-        this.endereço = endereço;
+        this.endereco = endereco;
         this.telefone = telefone;
     }
-    public boolean valida(String telefone){
+    public boolean validaTelefone(String telefone){
         if(telefone.length() == 10){
             return true;
         }else return false;
@@ -22,12 +22,12 @@ public abstract class Pessoa{
         this.nome = nome;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
@@ -39,6 +39,6 @@ public abstract class Pessoa{
     }
     @Override
     public String toString() {
-        return "Pessoa [endereço=" + endereço + ", nome=" + nome + ", telefone=" + telefone + "]\n";
+        return "Pessoa [endereco=" + endereco + ", nome=" + nome + ", telefone=" + telefone + "]\n";
     }
 }

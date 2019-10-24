@@ -8,14 +8,9 @@ public class Agenda implements AgendaInterface{
     }
 
     public void inserir(Pessoa novaPessoa) {
-    		if(novaPessoa.telefone.length() == (9)) {
-    			pessoa.add(novaPessoa);
-    		}else {
-    			System.out.println("Ocorreu um erro ao tentar adicionar essa pessoa: ");
-    		}
-    		
-    	}  
-
+        pessoa.add(novaPessoa);
+    	
+    }
     public void remover(String removerPessoa) {
         for(int i= 0; i < pessoa.size() ; i ++){
             if(pessoa.get(i).nome.equalsIgnoreCase(removerPessoa)){
@@ -23,31 +18,8 @@ public class Agenda implements AgendaInterface{
             }
          }
     }
-    public void ordenarCpf(PessoaFisica individuo, PessoaJuridica individuo2){
-    	for(int i = 0; i < pessoa.size() ; i++) {
-    		if(pessoa.get(i).equals(individuo2.getCnpj())) {
-    			for(int j = 0; j < pessoa.size() ; j++) {
-    				if(pessoa.get(i).equals(individuo.getCpf())) {
-    					pessoa.set(i, individuo);
-    					pessoa.set(j, individuo2);
-    				}
-    			}
-    		}
-    	}
+    public void ordenarCpf(){
     	
-        int min;
-        for(int i= 0; i < pessoa.size() ; i ++){
-            min = i;
-            for(int j= 0; j < pessoa.size() ; j ++){
-                if(j < min){
-                    min = j;
-                }
-            }/*
-            int aux = pessoa.get(i);
-            pessoa.get(i) = pessoa.get(min);
-            pessoa.get(min) = pessoa.get(aux);*/
-            
-        }
     }
 
     public void pesquisar(String pesquisa) {

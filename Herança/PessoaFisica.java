@@ -2,8 +2,12 @@ public class PessoaFisica extends Pessoa{
     private String cpf;
     private String datNascimento;
 
-    public PessoaFisica(String nome , String endereço , String telefone, String cpf , String datNascimento) {
-        super(nome, endereço, telefone);
+    public PessoaFisica(String nome , String endereco , String telefone, String cpf , String datNascimento) {
+        super.nome = nome;
+        super.endereco = endereco;
+        if(validaTelefone(telefone)){
+            super.telefone = telefone;
+        }
         if(verificarData(datNascimento)) {
         	this.datNascimento = datNascimento;
         }
@@ -12,7 +16,12 @@ public class PessoaFisica extends Pessoa{
         }
     }
     public PessoaFisica() {
-  	}
+      }
+    public boolean validaTelefone(String telefone){
+        if(telefone.length() == 9){
+            return true;
+        }else return false;
+    }
     public boolean valida(String numeroCpf){
         if(numeroCpf.length() == 11){
             return true;
@@ -42,6 +51,6 @@ public class PessoaFisica extends Pessoa{
 
     @Override
     public String toString() {
-        return "PessoaFisica [endereço=" + endereço + ", nome=" + nome + ", telefone=" + telefone + ", cpf=" + cpf + ", datNascimento=" + datNascimento + "]\n";
+        return "PessoaFisica [endereco=" + endereco + ", nome=" + nome + ", telefone=" + telefone + ", cpf=" + cpf + ", datNascimento=" + datNascimento + "]\n";
     }
 }
