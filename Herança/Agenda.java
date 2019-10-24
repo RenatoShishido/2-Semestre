@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Agenda implements AgendaInterface{
     private ArrayList<Pessoa> pessoa;
+
  
     public Agenda() {
         pessoa = new ArrayList<Pessoa>();
@@ -12,10 +13,16 @@ public class Agenda implements AgendaInterface{
     	
     }
     public void remover(String removerPessoa) {
+        PessoaFisica p1;
+        p1 = (PessoaFisica) pessoa.get(3);
+        System.out.println(p1.getCpf());
+        System.out.println(p1.getClass().getSimpleName());
         for(int i= 0; i < pessoa.size() ; i ++){
-            if(pessoa.get(i).nome.equalsIgnoreCase(removerPessoa)){
+            /*if(pessoa.get(i).nome.equalsIgnoreCase(removerPessoa)){
                 pessoa.remove(pessoa.get(i));
-            }
+            }else if (p1.getCpf().equals(removerPessoa)){
+                pessoa.remove(p1.getCpf());
+            }*/
          }
     }
     public void ordenarCpf(){
