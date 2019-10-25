@@ -15,10 +15,6 @@ public class PessoaFisica extends Pessoa {
             this.cpf = cpf;
         }
     }
-
-    public PessoaFisica() {
-    }
-
     public boolean validaTelefone(String telefone) {
         if (telefone.length() == 9) {
             return true;
@@ -55,15 +51,13 @@ public class PessoaFisica extends Pessoa {
     public void setDatNascimento(String datNascimento) {
         this.datNascimento = datNascimento;
     }
-
-    @Override
-    public String toString() {
-        return "PessoaFisica [endereco=" + endereco + ", nome=" + nome + ", telefone=" + telefone + ", cpf=" + cpf
-                + ", datNascimento=" + datNascimento + "]\n";
-    }
-
     @Override
     public String getId() {
         return cpf;
+    }
+    @Override
+    public String toString() {
+        return "PessoaFisica [" + super.toString() + ", cpf=" + cpf
+                + ", datNascimento=" + datNascimento + "]\n";
     }
 }

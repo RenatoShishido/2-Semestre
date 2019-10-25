@@ -14,9 +14,6 @@ public class PessoaJuridica extends Pessoa {
         }
     }
 
-    public PessoaJuridica() {
-    }
-
     public boolean valida(String cnpj) {
         if (cnpj.length() == 14 && telefone.length() == 9) {
             return true;
@@ -46,14 +43,13 @@ public class PessoaJuridica extends Pessoa {
     public void setInsEstadual(String insEstadual) {
         this.insEstadual = insEstadual;
     }
-
-    @Override
-    public String toString() {
-        return "PessoaJuridica [endereco=" + endereco + ", nome=" + nome + ", telefone=" + telefone + ", cnpj=" + cnpj
-                + ", insEstadual=" + insEstadual + "]\n";
-    }
     @Override
     public String getId() {
         return cnpj;
+    }
+    @Override
+    public String toString() {
+        return "PessoaJuridica [" + super.toString() + ", cnpj=" + cnpj
+                + ", insEstadual=" + insEstadual + "]\n";
     }
 }

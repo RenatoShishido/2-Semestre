@@ -1,8 +1,12 @@
 public interface AgendaInterface {
     void inserir(Pessoa novaPessoa);
 
-    void remover(String removerPessoa);
+    void remover(String cnpjCpfPessoa);
 
-    void pesquisar(String pesquisa);
+    Pessoa pesquisar(String cnpjCpfPessoa);
+
+    void ordenaCpf();
+    
+    void exibir();
 
 }
